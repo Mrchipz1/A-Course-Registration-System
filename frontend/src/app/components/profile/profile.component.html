@@ -1,0 +1,181 @@
+<div *ngIf = 'user' id="app">		
+    <div class="sidebar app-aside" id="sidebar">
+            <div class="sidebar-container perfect-scrollbar">
+                <nav>
+                
+                <!-- start: MAIN NAVIGATION MENU -->
+                <div class="navbar-title">
+                  <span>Main Navigation</span>
+                  
+                </div>
+                <ul class="main-navigation-menu">
+                    <li>
+                        <a [routerLink]="['/dashboard']">
+                            <div class="item-content">
+                                <div class="item-media">
+                                  <i class="ti-home"></i>
+                                </div>
+                                <div class="item-inner">
+                                  <span class="title"> Dashboard </span>
+                                </div>
+                              </div>
+                            </a>
+                          </li>
+                          <li>
+                              <a [routerLink]="['/registercourses']">
+                                  <div class="item-content">
+                                      <div class="item-media">
+                                        <i class="ti-home"></i>
+                                      </div>
+                                      <div class="item-inner">
+                                        <span class="title"> Register Courses </span>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </li>
+                                <li>
+                                    <a [routerLink]="['/profile']">
+                                        <div class="item-content">
+                                            <div class="item-media">
+                                              <i class="ti-home"></i>
+                                            </div>
+                                            <div class="item-inner">
+                                              <span class="title"> Profile </span>
+                                            </div>
+                                          </div>
+                                        </a>
+                                      </li>
+                                        
+                                     
+        </ul>
+        </nav>
+        </div>
+        </div>
+        <div class="app-content">
+            <header class="navbar navbar-default navbar-static-top">
+                <div class="navbar-header">
+                    <a href="#" class="sidebar-mobile-toggler pull-left hidden-md hidden-lg" class="btn btn-navbar sidebar-toggle" data-toggle-class="app-slide-off" data-toggle-target="#app" data-toggle-click-outside="#sidebar">
+                      <i class="ti-align-justify"></i>
+                    </a>
+                    <a class="navbar-brand" href="#">
+                      <h2 style="padding-top:2% ">Student portal</h2>
+                    </a>
+                    <a href="#" class="sidebar-toggler pull-right visible-md visible-lg" data-toggle-class="app-sidebar-closed" data-toggle-target="#app">
+                      <i class="ti-align-justify"></i>
+                    </a>
+                    <a class="pull-right menu-toggler visible-xs-block" id="menu-toggler" data-toggle="collapse" href=".navbar-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <i class="ti-view-grid"></i>
+                    </a>
+                  </div>
+                  <div class="navbar-collapse collapse">
+                      <ul class="nav navbar-right">
+                        <!-- start: MESSAGES DROPDOWN -->
+                          <li  style="padding-top:2% ">
+                          <h2>{{user.firstname}} {{user.secondname}} </h2>
+                        </li>
+                        <li class="dropdown current-user">
+                            <a href class="dropdown-toggle" data-toggle="dropdown">
+                              <img src="assets/images/avatar-1.jpg" alt="Peter"> <span class="username">
+                                  <i class="ti-angle-down"></i></span>
+                                  </a>
+                                  <ul class="dropdown-menu dropdown-dark">
+                      
+                    
+                                      
+                                      <li>
+                                        <a href="#" (click)='onlogout()'>
+                                          Log Out
+                                        </a>
+                                      </li>
+                                    </ul>
+                                    </li>
+                                    </ul>
+                                    <div class="close-handle visible-xs-block menu-toggler" data-toggle="collapse" href=".navbar-collapse">
+                                        <div class="arrow-left"></div>
+                                        <div class="arrow-right"></div>
+                                      </div>
+                                      </div>
+                                    </header>
+                                    <div class="main-content" >
+                                        <div class="wrap-content container" id="container">
+                                            <section id="page-title">
+                                                <div class="row">
+                                                  <div class="col-sm-8">
+                                                    <h1 class="mainTitle">{{user.secondname}} | Dashboard</h1>
+                                                                    </div>
+                                                  <ol class="breadcrumb">
+                                                    <li>
+                                                      <span>{{user.firstname}}</span>
+                                                    </li>
+                                                    <li class="active">
+                                                      <span>Dashboard</span>
+                                                    </li>
+                                                  </ol>
+                                                </div>
+                                              </section>
+                                              <div class="container-fluid container-fullw bg-white">
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                      
+                                                      <div class="row margin-top-30">
+                                                        <div class="col-lg-8 col-md-12">
+                                                          <div class="panel panel-white">
+                                                            <div class="panel-heading">
+                                                              <h5 class="panel-title">View Profile</h5>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                      
+                                                              <form role="form" name="adddoc" method="post" onSubmit="return valid();">
+                                                                
+                                    
+                                    <div class="form-group">
+                                                                  <label for="firstname">
+                                                                     First Name
+                                                                  </label>
+                                              <input type="text"  class="form-control"  placeholder="First Name" value = {{user.firstname}}  readonly = "readonly">
+                                                                </div>
+                                    
+                                                                <div class="form-group">
+                                                                  <label for="secondname">
+                                                                     Second Name
+                                                                  </label>
+                                              <input type="text"  class="form-control"  placeholder="second Name" value = {{user.secondname}}  readonly = "readonly">
+                                                                </div>
+                                    
+                                    
+                                                                  <div class="form-group">
+                                                                  <label for="email">
+                                                                     Email
+                                                                  </label>
+                                              <input type="text"  class="form-control"  placeholder="Email" value = {{user.email}} readonly = "readonly">
+                                                                </div>
+                                      
+                                      
+                                      
+                                                      
+                                    
+                                    
+                                    
+                                                                
+                                                                
+                                                      
+                                                                
+                                                                
+                                                                
+                                                                
+                                                              </form>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                          
+                                                          </div>
+                                                        </div>
+                                                      <div class="col-lg-12 col-md-12">
+                                                          <div class="panel panel-white">
+                                                            
+                                                            
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>

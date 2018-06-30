@@ -1,0 +1,1103 @@
+
+
+<div *ngIf = 'user' id="app">		
+    <div class="sidebar app-aside" id="sidebar">
+            <div class="sidebar-container perfect-scrollbar">
+                <nav>
+                
+                <!-- start: MAIN NAVIGATION MENU -->
+                <div class="navbar-title">
+                  <span>Main Navigation</span>
+                  
+                </div>
+                <ul class="main-navigation-menu">
+                    <li>
+                        <a [routerLink]="['/dashboard']">
+                            <div class="item-content">
+                                <div class="item-media">
+                                  <i class="ti-home"></i>
+                                </div>
+                                <div class="item-inner">
+                                  <span class="title"> Dashboard </span>
+                                </div>
+                              </div>
+                            </a>
+                          </li>
+                          <li>
+                              <a [routerLink]="['/registercourses']">
+                                  <div class="item-content">
+                                      <div class="item-media">
+                                        <i class="ti-home"></i>
+                                      </div>
+                                      
+                                      <div class="item-inner">
+                                        <span class="title"> Register Courses </span>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </li>
+                                <li>
+                                    <a [routerLink]="['/profile']">
+                                        <div class="item-content">
+                                            <div class="item-media">
+                                              <i class="ti-home"></i>
+                                            </div>
+                                            <div class="item-inner">
+                                              <span class="title"> Profile </span>
+                                            </div>
+                                          </div>
+                                        </a>
+                                      </li>
+                                        
+                                     
+        </ul>
+        </nav>
+        </div>
+        </div>
+        <div class="app-content">
+            <header class="navbar navbar-default navbar-static-top">
+                <div class="navbar-header">
+                    <a href="#" class="sidebar-mobile-toggler pull-left hidden-md hidden-lg" class="btn btn-navbar sidebar-toggle" data-toggle-class="app-slide-off" data-toggle-target="#app" data-toggle-click-outside="#sidebar">
+                      <i class="ti-align-justify"></i>
+                    </a>
+                    <a class="navbar-brand" href="#">
+                      <h2 style="padding-top:2% ">Student portal</h2>
+                    </a>
+                    <a href="#" class="sidebar-toggler pull-right visible-md visible-lg" data-toggle-class="app-sidebar-closed" data-toggle-target="#app">
+                      <i class="ti-align-justify"></i>
+                    </a>
+                    <a class="pull-right menu-toggler visible-xs-block" id="menu-toggler" data-toggle="collapse" href=".navbar-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <i class="ti-view-grid"></i>
+                    </a>
+                  </div>
+                  <div class="navbar-collapse collapse">
+                      <ul class="nav navbar-right">
+                        <!-- start: MESSAGES DROPDOWN -->
+                          <li  style="padding-top:2% ">
+                          <h2>{{user.firstname}} {{user.secondname}} </h2>
+                        </li>
+                        <li class="dropdown current-user">
+                            <a href class="dropdown-toggle" data-toggle="dropdown">
+                              <img src="assets/images/avatar-1.jpg" alt="Peter"> <span class="username">
+                                  <i class="ti-angle-down"></i></span>
+                                  </a>
+                                  <ul class="dropdown-menu dropdown-dark">
+                      
+                    
+                                      
+                                      <li>
+                                        <a href="#"  (click)='onlogout()'>
+                                          Log Out
+                                        </a>
+                                      </li>
+                                    </ul>
+                                    </li>
+                                    </ul>
+                                    <div class="close-handle visible-xs-block menu-toggler" data-toggle="collapse" href=".navbar-collapse">
+                                        <div class="arrow-left"></div>
+                                        <div class="arrow-right"></div>
+                                      </div>
+                                      </div>
+                                    </header>
+                                    <div class="main-content" >
+                                        <div class="wrap-content container" id="container">
+                                            <section id="page-title">
+                                                <div class="row">
+                                                  <div class="col-sm-8">
+                                                    <h1 class="mainTitle">{{user.secondname}} | Dashboard</h1>
+                                                                    </div>
+                                                  <ol class="breadcrumb">
+                                                    <li>
+                                                      <span>{{user.firstname}}</span>
+                                                    </li>
+                                                    <li class="active">
+                                                      <span>Dashboard</span>
+                                                    </li>
+                                                  </ol>
+                                                </div>
+                                              </section>
+                                              <div class="container-fluid container-fullw bg-white">
+                                                  <div class="row">
+                                                      <div class="col-md-12">
+                                                          <h5 class="over-title margin-bottom-15">Register<span class="text-bold">Courses</span></h5>
+                                                        
+                  <p style="color:red;">	</p>
+                 
+                  <div *ngIf= "status == 0; then notregistered"></div>
+                  <div *ngIf= "status == 1; then registered"></div>
+                  <div *ngIf= "status == 2; then approved"></div>
+                    
+                  <ng-template #notregistered>   
+                    <form >	
+									<table class="table table-hover" id="sample-table-1">
+										<thead>
+											<tr>
+												
+												<th>Course Code</th>
+												<th>Course Title</th>
+												<th class="hidden-xs">Course Unit</th>
+												<th> Select Course</th>
+												
+												
+                      </tr>
+                      <tr *ngFor = 'let course of courses'>
+                        <td >{{course.coursecode}}</td>
+                        <td>{{course.coursetitle}}</td>
+                        <td>{{course.courseunit}}</td>
+                        <td hidden>{{user.email}}</td>
+                        
+                        <td hidden>{{user._id}}</td>
+                        
+                        
+                        <td><input type="checkbox" name="courses" [(ngModel)] = "course.checked" ></td>
+                         
+                      </tr>
+                      <br><br>
+                      <button type="submit" class="btn btn-primary pull-left" (click)='registercourses(user.email,user._id)'>
+                        Register <i class="fa fa-arrow-circle-right"></i>
+                      </button>
+
+										</thead>
+										
+                  </table>
+                </form>
+              </ng-template>
+              <ng-template #registered>Courses have been registered,await admin approval</ng-template>
+              <ng-template #approved> Your course registration has been approved,Click the button below to view your approved courses<br><br>
+                <button type="submit" class="btn btn-primary pull-left"  data-toggle = 'modal' data-target = "#coursemodal" (click)=' getcourses2(user.email)' >
+                   View Approved Courses<i class="fa fa-arrow-circle-right"></i>
+                </button></ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+
+              
+                <div id = "coursemodal" class="modal fade">
+                    <div class="modal-dialog" >
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" > Courses Registered </h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-hover" id="sample-table-1">
+                                <thead>
+                                    <tr>
+                                      
+                                      <th>Course Code</th>
+                                      <th>Course Title</th>
+                                      <th>Course Unit</th>
+
+                                      </tr>
+                                      <tr *ngFor = "let course of ucourses">
+                                       <td>{{course.coursecode}}</td>
+                                       <td>{{course.coursetitle}}</td>
+                                       <td>{{course.courseunit}}</td>
+                                      </tr>
+                                      </thead>
+                                      </table>
+                        </div>
+                       
+                    </div>
+                  </div>
+                  </div>
+            
+            
+             
+
+             

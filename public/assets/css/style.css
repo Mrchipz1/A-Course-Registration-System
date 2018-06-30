@@ -1,0 +1,77 @@
+#steveinc{
+  text-align:center;
+  padding:40px;
+  background:url(../../assets/img/background.jpg);
+  background-size:cover;
+  margin-top:65px;
+}
+
+#welcome p{
+  font-size:20px;
+  margin:0 auto;
+  max-width:860px;
+}
+
+.site-section{
+  text-align:center;
+  padding:70px;
+}
+
+#why .item{
+  margin-top:36px;
+}
+
+.dark-section{
+  background-color:#45a3c7;
+}
+
+#why .item i{
+  font-size:42px;
+  color:rgb(6,19,38);
+}
+
+#why .item h2{
+  font-weight:normal;
+  margin-top:30px;
+  margin-bottom:60px;
+  font-size:20px;
+}
+
+.site-section h1{
+  font-weight:normal;
+  margin-bottom:30px;
+}
+
+#steveinc .jumbotron{
+  border-radius:20px;
+  padding:40px;
+  background-color:rgba(255,255,255,0.75);
+  max-width:860px;
+  margin:0 auto;
+}
+
+#steveinc .jumbotron h1{
+  font-size:40px;
+}
+
+@media (max-width:991px) {
+  #steveinc{
+    padding:20px;
+  }
+}
+
+@media (max-width:991px) {
+  #steveinc .jumbotron{
+    padding:20px;
+  }
+}
+
+body{
+  font-family:arial,helvetica,sans-serif;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus{
+  color:#333333;
+  background-color:rgb(70,167,202);
+}
+
