@@ -45,6 +45,6 @@ app.get('*',(req,res)=>{
 })
 
 //setting our port to listen on an interface
-app.listen(port,'192.168.43.68',()=>{
+app.listen(port,()=>{
     console.log('port has been connected on port:'+port)
 })
